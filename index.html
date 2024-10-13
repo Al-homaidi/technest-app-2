@@ -6,399 +6,358 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <style>
-      .technest-sercal {
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        text-align: end;
-        transition: transform 0.6s, opacity 0.6s;
-        z-index: 99;
-      }
-      .technest-text {
-        color: white;
-        background-color: #1a73e8;
-        border-radius: 10px;
-        padding: 5px 10px;
-        cursor: pointer;
-      }
-      .technest-popup {
-        position: fixed;
-        background-color: white;
-        padding: 20px;
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-        z-index: 1000;
-        border-radius: 10px;
-        opacity: 0;
-        transform: scale(0.2);
-        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-      }
-      .technest-popup-active {
-        display: block !important;
-        opacity: 1;
-        transform: scale(1);
-      }
-      .technest-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-      }
-      .technest-overlay-active {
-        display: block !important;
-      }
-      .technest-scroll-hidden {
-        transform: translateY(-50%) translateX(-100px);
-        opacity: 0.5;
-        display: flex;
-      }
-      .technest-popup-center {
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        position: fixed;
-        min-width: 300px;
-        display: none;
-      }
-      .technest-h1 {
-        background: #1a73e8;
-        padding: 6px;
-        border-radius: 9px;
-        color: white;
-        margin: 0;
-      }
-      .technest-top {
-        display: flex;
-        justify-content: flex-end;
-        position: relative;
-      }
-      .technest-form {
-        padding: 20px 10px 0px 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-      .technest-x {
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-radius: 10px 0px 10px 0px;
-        background: #ff1a1a;
-        color: white;
-        border: none;ƒ
-        cursor: pointer;
-      }
-      .technest-box-flex {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .technest-w-100 {
-        width: 100% !important;
-      }
-      .technest-box-group {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-      }
-      .technest-input-group {
-        position: relative;
-        text-align: end;
-        flex: 0 0 auto;
-        width: 48.7%;
-        display: flex;
-      }
-      .technest-input {
-        border: solid 1.5px #9e9e9e;
-        border-radius: 1rem;
-        background: none;
-        padding: 10px;
-        font-size: 1rem;
-        color: #000000;
-        transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
-        width: 100%;
-        text-align: right;
-      }
-      .technest-user-label {
-        position: absolute;
-        right: 15px;
-        color: #000000;
-        pointer-events: none;
-        transform: translateY(1rem);
-        transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-        top: -5px;
-      }
-      .technest-input:focus,
-      input:valid,
-      .technest-textarea:focus-visible,
-      .technest-textarea:focus,
-      .technest-has-value {
-        outline: none;
-        border: 1.5px solid #1a73e8 !important;
-      }
-
-      .technest-input:focus ~ .technest-user-label,
-      input:valid ~ .technest-user-label,
-      .technest-textarea:focus-visible ~ .technest-user-label,
-      .technest-textarea:focus ~ .technest-user-label,
-      .technest-has-value ~ .technest-user-label {
-        transform: translateY(-50%) scale(0.8);
-        background-color: #ffffff;
-        padding: 0 0.2em;
-        color: #2196f3;
-      }
-      @media (max-width: 767px) {
-        .technest-popup-center {
-          min-width: 85% !important;
+        .technest-sercal {
+          position: fixed;
+          top: 50%;
+          transform: translateY(-50%);
+          text-align: end;
+          transition: transform 0.6s, opacity 0.6s;
+          z-index: 99;
         }
-      }
+        .technest-text {
+          color: white;
+          background-color: #1a73e8;
+          border-radius: 10px;
+          padding: 5px 10px;
+          cursor: pointer;
+        }
+        .technest-popup {
+          position: fixed;
+          background-color: white;
+          padding: 20px;
+          box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+          z-index: 1000;
+          border-radius: 10px;
+          opacity: 0;
+          transform: scale(0.2);
+          transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+        }
+        .technest-popup-active {
+          display: block !important;
+          opacity: 1;
+          transform: scale(1);
+        }
+        .technest-overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 999;
+        }
+        .technest-overlay-active {
+          display: block !important;
+        }
+        .technest-scroll-hidden {
+          transform: translateY(-50%) translateX(-100px);
+          opacity: 0.5;
+          display: flex;
+        }
+        .technest-popup-center {
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          position: fixed;
+          min-width: 300px;
+          display: none;
+        }
+        .technest-h1 {
+          background: #1a73e8;
+          padding: 6px;
+          border-radius: 9px;
+          color: white;
+          margin: 0;
+        }
+        .technest-top {
+          display: flex;
+          justify-content: flex-end;
+          position: relative;
+        }
+        .technest-form {
+          padding: 20px 10px 0px 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+        .technest-x {
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-radius: 10px 0px 10px 0px;
+          background: #ff1a1a;
+          color: white;
+          border: none;ƒ
+          cursor: pointer;
+        }
+        .technest-box-flex {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .technest-w-100 {
+          width: 100% !important;
+        }
+        .technest-box-group {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+        .technest-input-group {
+          position: relative;
+          text-align: end;
+          flex: 0 0 auto;
+          width: 48.7%;
+          display: flex;
+        }
+        .technest-input {
+          border: solid 1.5px #9e9e9e;
+          border-radius: 1rem;
+          background: none;
+          padding: 10px;
+          font-size: 1rem;
+          color: #000000;
+          transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+          width: 100%;
+          text-align: right;
+        }
+        .technest-user-label {
+          position: absolute;
+          right: 15px;
+          color: #000000;
+          pointer-events: none;
+          transform: translateY(1rem);
+          transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+          top: -5px;
+        }
+        .technest-input:focus,
+        input:valid,
+        .technest-textarea:focus-visible,
+        .technest-textarea:focus,
+        .technest-has-value {
+          outline: none;
+          border: 1.5px solid #1a73e8 !important;
+        }
 
-      .technest-submit {
-        background: #1a73e8;
-        color: white;
-        outline: none;
-        border: none;
-        padding: 8px 20px;
-        font-size: 16px;
-        border-radius: 12px;
-        cursor: pointer;
-      }
+        .technest-input:focus ~ .technest-user-label,
+        input:valid ~ .technest-user-label,
+        .technest-textarea:focus-visible ~ .technest-user-label,
+        .technest-textarea:focus ~ .technest-user-label,
+        .technest-has-value ~ .technest-user-label {
+          transform: translateY(-50%) scale(0.8);
+          background-color: #ffffff;
+          padding: 0 0.2em;
+          color: #2196f3;
+        }
+        @media (max-width: 767px) {
+          .technest-popup-center {
+            min-width: 85% !important;
+          }
+        }
 
-      .technest-submit {
-        border: 0;
-        background-color: #1a73e8;
-        letter-spacing: 1.5px;
-        font-size: 15px;
-        transition: all 0.3s ease;
-        box-shadow: rgb(26 115 232 / 89%) 0px 3px 0px 0px;
-        color: hsl(0, 0%, 100%);
-        cursor: pointer;
-      }
+        .technest-submit {
+          background: #1a73e8;
+          color: white;
+          outline: none;
+          border: none;
+          padding: 8px 20px;
+          font-size: 16px;
+          border-radius: 12px;
+          cursor: pointer;
+        }
 
-      .technest-submit:hover {
-        box-shadow: rgb(26 115 232 / 89%) 0px 1px 0px 0px;
-      }
+        .technest-submit {
+          border: 0;
+          background-color: #1a73e8;
+          letter-spacing: 1.5px;
+          font-size: 15px;
+          transition: all 0.3s ease;
+          box-shadow: rgb(26 115 232 / 89%) 0px 3px 0px 0px;
+          color: hsl(0, 0%, 100%);
+          cursor: pointer;
+        }
 
-      .technest-submit:active {
-        background-color: #1a73e8;
-        box-shadow: rgb(26 115 232 / 80%) 0px 0px 0px 0px;
-        transform: translateY(5px);
-        transition: 200ms;
-      }
-      .technest-box-svg {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-      }
-      .technest-box-child {
-        display: flex;
-        align-items: center;
-        background: #8080808a;
-        padding: 10px;
-        border-radius: 10px;
-        border: 2px dashed #cacaca;
-        box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
-        border: 2px dashed #cacaca;
-        background-color: rgba(255, 255, 255, 1);
-        gap: 10px;
-        cursor: pointer;
-      }
-      .technest-box-child svg {
-        width: 20px;
-        color: #a1a5b7;
-      }
-      .technest-box-child p {
-        margin: 0;
-      }
-      input[type="file"] {
-        display: none;
-      }
-      .technest-img-container {
-        position: relative;
-        display: inline-block;
-        margin: 10px;
-        background-color: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        padding: 1px 1px 28px;
-      }
-      .technest-preview-image {
-        width: 50px;
-        height: 50px;
-        display: block;
-        object-fit: contain;
-      }
-      .technest-delete-btn {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #ff4d4d;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-        font-size: 14px;
-        border-radius: 0px 0px 4px 4px;
-        width: 100%;
-      }
+        .technest-submit:hover {
+          box-shadow: rgb(26 115 232 / 89%) 0px 1px 0px 0px;
+        }
 
-      .technest-delete-btn:hover {
-        background-color: #ff1a1a;
-      }
-      .technest-text-center {
-        text-align: center;
-        max-height: 200px;
-        overflow: auto;
-      }
+        .technest-submit:active {
+          background-color: #1a73e8;
+          box-shadow: rgb(26 115 232 / 80%) 0px 0px 0px 0px;
+          transform: translateY(5px);
+          transition: 200ms;
+        }
+        .technest-box-svg {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+        }
+        .technest-box-child {
+          display: flex;
+          align-items: center;
+          background: #8080808a;
+          padding: 10px;
+          border-radius: 10px;
+          border: 2px dashed #cacaca;
+          box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
+          border: 2px dashed #cacaca;
+          background-color: rgba(255, 255, 255, 1);
+          gap: 10px;
+          cursor: pointer;
+        }
+        .technest-box-child svg {
+          width: 20px;
+          color: #a1a5b7;
+        }
+        .technest-box-child p {
+          margin: 0;
+        }
+        input[type="file"] {
+          display: none;
+        }
+        .technest-img-container {
+          position: relative;
+          display: inline-block;
+          margin: 10px;
+          background-color: white;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          padding: 1px 1px 28px;
+        }
+        .technest-preview-image {
+          width: 50px;
+          height: 50px;
+          display: block;
+          object-fit: contain;
+        }
+        .technest-delete-btn {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: #ff4d4d;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          cursor: pointer;
+          font-size: 14px;
+          border-radius: 0px 0px 4px 4px;
+          width: 100%;
+        }
 
-      .technest-text-center::-webkit-scrollbar {
-        width: 5px;
-        background: transparent;
-      }
+        .technest-delete-btn:hover {
+          background-color: #ff1a1a;
+        }
+        .technest-text-center {
+          text-align: center;
+          max-height: 200px;
+          overflow: auto;
+        }
 
-      .technest-text-center::-webkit-scrollbar-thumb {
-        background-color: #1a73e8;
-        border-radius: 10px;
-        border: none;
-      }
+        .technest-text-center::-webkit-scrollbar {
+          width: 5px;
+          background: transparent;
+        }
 
-      .technest-text-center::-webkit-scrollbar-thumb:hover {
-        background-color: #0c4da8;
-      }
+        .technest-text-center::-webkit-scrollbar-thumb {
+          background-color: #1a73e8;
+          border-radius: 10px;
+          border: none;
+        }
 
-      .technest-text-center::-webkit-scrollbar-track {
-        background: transparent;
-      }
+        .technest-text-center::-webkit-scrollbar-thumb:hover {
+          background-color: #0c4da8;
+        }
 
-      .technest-text-center::-webkit-scrollbar-button {
-        display: none;
-      }
+        .technest-text-center::-webkit-scrollbar-track {
+          background: transparent;
+        }
 
-      .technest-textarea {
-        width: 100%;
-        height: 50px;
-        resize: none;
-        box-sizing: border-box;
-        text-align: end;
-        color: #000000;
-        font-size: 13px;
-        font-weight: bold;
+        .technest-text-center::-webkit-scrollbar-button {
+          display: none;
+        }
 
-        border: solid 1.5px #9e9e9e;
-        border-radius: 1rem;
-        background: none;
-        padding: 10px;
-        font-size: 1rem;
-        color: #000000;
-        transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
-        text-align: right;
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        line-height: 1.5;
-        color: #333;
-        background-color: #fff;
+        .technest-textarea {
+          width: 100%;
+          height: 50px;
+          resize: none;
+          box-sizing: border-box;
+          text-align: end;
+          color: #000000;
+          font-size: 13px;
+          font-weight: bold;
+
+          border: solid 1.5px #9e9e9e;
+          border-radius: 1rem;
+          background: none;
+          padding: 10px;
+          font-size: 1rem;
+          color: #000000;
+          transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+          text-align: right;
+          font-family: Arial, sans-serif;
+          font-size: 16px;
+          line-height: 1.5;
+          color: #333;
+          background-color: #fff;
+        }
+        .textarea-box-textarea {
+          position: relative;
+        }
+        #erormasge {
+          color: #ff1a1a;
+          position: absolute;
+          left: 0;
+          font-size: 12px;
+        }
+        .technest-box-like {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 2px dashed #cacaca;
+          padding: 70px;
+          border-radius: 50%;
+          background-color: rgb(255, 255, 255);
+          box-shadow: 0px 0px 5px 0px #dbdbdb;
+          opacity: 0;
+          transition: transform 0.3s ease-out, opacity 0.3s ease-out;
       }
-      .textarea-box-textarea {
-        position: relative;
+      .technest-like-active svg {
+        width: 200px;
       }
-      #erormasge {
-        color: #ff1a1a;
-        position: absolute;
-        left: 0;
-        font-size: 12px;
-      }
-      .technest-box-like {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0);
+      .technest-horn-like {
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 2px dashed #cacaca;
-        padding: 70px;
-        border-radius: 50%;
-        background-color: rgb(255, 255, 255);
+        width: 100px;
+        height: 100px;
+        font-size: 100px;
+      }
+      .technest-like-p {
+        position: absolute;
+        top: 11px;
+        color: white;
+        background: #1a73e8;
+        padding: 5px;
+        border-radius: 10px;
         box-shadow: 0px 0px 5px 0px #dbdbdb;
-        opacity: 0;
-        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-    }
-    .technest-like-active svg {
-      width: 200px;
-    }
-    .technest-horn-like {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100px;
-      height: 100px;
-      font-size: 100px;
-    }
-    .technest-box-like {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      border: 2px dashed #cacaca;
-      width: 400px;
-      height: 400px;
-      border-radius: 50%;
-      background-color: rgb(255, 255, 255);
-      box-shadow: 0px 0px 5px 0px #dbdbdb;
-      margin: 50px auto; /* Centers the circle horizontally */
-    }
-  
-    .technest-horn-like {
-      position: absolute;
-      font-size: 3rem;
-      bottom: 20px;
-      text-align: center;
-    }
-  
-svg {
-  fill: currentColor;
-  height: auto;
-  max-width: 66vmin;
-  transform-origin: center;
-  width: 66%;
-}
+      }
     </style>
   </head>
-  <body style="height: 10000px">
+  <body style="height: 1295vh; background-image: url('./noon.png'); background-size: cover;">
     <div class="technest-sercal">
       <span class="technest-text" id="openPopup">اطلب منتج خاص</span>
     </div>
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-        <path fill="#a1a5b7" d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2l144 0c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48l-97.5 0c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3l0-38.3 0-48 0-24.9c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192l64 0c17.7 0 32 14.3 32 32l0 224c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32L0 224c0-17.7 14.3-32 32-32z"/>
-    </svg> -->
-    <svg viewBox="0 0 100 100" width="100" height="100">
-      <defs>
-        <path id="circle"
-          d="
-            M 50, 50
-            m -37, 0
-            a 37,37 0 1,1 74,0
-            a 37,37 0 1,1 -74,0"/>
-      </defs>
-      <text font-size="17">
-        <textPath xlink:href="#circle">
-          You spin me right round, baby...
-          <div class="technest-box-like" id="technest-box-like">
-
-            <span class="technest-horn-like">🎉</span>
-          </div>
-        </textPath>
-        
-      </text>
-    </svg>
-
-
-  <button onclick="lickup()">Like</button>
+    <div class="technest-box-like" id="technest-box-like">
+      <p class="technest-like-p">سيتم التواصل معك قريبا</p>
+      <span class="technest-horn-like">🎉</span>
+    </div>
 
     <div class="technest-overlay" id="overlay"></div>
     <div class="technest-popup technest-popup-center" id="popup">
@@ -442,7 +401,7 @@ svg {
           />
           <label class="technest-user-label">الايميل</label>
         </div>
-  
+
         <div class="technest-box-svg">
           <input
             name="images[]"
@@ -466,9 +425,9 @@ svg {
             <p>انقر لاضافة الصور</p>
           </label>
         </div>
-  
+
         <div class="technest-text-center" id="imagePreviewContainer"></div>
-  
+
         <div class="textarea-box-textarea">
           <textarea
             id="technest-description"
@@ -478,23 +437,24 @@ svg {
           ></textarea>
           <label class="technest-user-label">الوصف</label>
         </div>
-  
+
         <div class="technest-box-flex">
           <button class="technest-submit" id="submitBtn" type="submit">
             إرسال
           </button>
         </div>
       </form>
-  
+
       <button class="technest-x" id="closePopup">X</button>
     </div>
-  
+
     <script>
       let selectedFiles = [];
       document.addEventListener("DOMContentLoaded", () => {
-  
-        const inputs = document.querySelectorAll(".technest-input, .technest-textarea");
-  
+        const inputs = document.querySelectorAll(
+          ".technest-input, .technest-textarea"
+        );
+
         inputs.forEach((input) => {
           input.addEventListener("input", function () {
             if (this.value) {
@@ -503,21 +463,25 @@ svg {
               this.classList.remove("technest-has-value");
             }
           });
-  
+
           if (input.value) {
             input.classList.add("technest-has-value");
           }
         });
-  
-        const multipleImageUpload = document.getElementById("multipleImageUpload");
-        const imagePreviewContainer = document.getElementById("imagePreviewContainer");
-  
+
+        const multipleImageUpload = document.getElementById(
+          "multipleImageUpload"
+        );
+        const imagePreviewContainer = document.getElementById(
+          "imagePreviewContainer"
+        );
+
         multipleImageUpload.addEventListener("change", function () {
           selectedFiles = Array.from(this.files);
           this.value = "";
           updateImagePreview();
         });
-  
+
         function updateImagePreview() {
           imagePreviewContainer.innerHTML = "";
           selectedFiles.forEach((file, index) => {
@@ -525,11 +489,11 @@ svg {
             reader.onload = function (e) {
               const imgContainer = document.createElement("div");
               imgContainer.classList.add("technest-img-container");
-  
+
               const imgElement = document.createElement("img");
               imgElement.src = e.target.result;
               imgElement.classList.add("technest-preview-image");
-  
+
               const deleteBtn = document.createElement("button");
               deleteBtn.innerText = "حذف";
               deleteBtn.classList.add("technest-delete-btn");
@@ -537,7 +501,7 @@ svg {
                 selectedFiles.splice(index, 1);
                 updateImagePreview();
               });
-  
+
               imgContainer.appendChild(imgElement);
               imgContainer.appendChild(deleteBtn);
               imagePreviewContainer.appendChild(imgContainer);
@@ -546,15 +510,15 @@ svg {
           });
         }
       });
-  
+
       const sercalElement = document.querySelector(".technest-sercal");
       const popup = document.getElementById("popup");
       const overlay = document.getElementById("overlay");
       const openPopupButton = document.getElementById("openPopup");
       const closePopupButton = document.getElementById("closePopup");
-  
+
       let scrollTimer;
-  
+
       window.addEventListener("scroll", () => {
         sercalElement.classList.add("technest-scroll-hidden");
         clearTimeout(scrollTimer);
@@ -562,111 +526,112 @@ svg {
           sercalElement.classList.remove("technest-scroll-hidden");
         }, 1000);
       });
-  
+
       openPopupButton.addEventListener("click", () => {
         popup.classList.add("technest-popup-active");
         overlay.classList.add("technest-overlay-active");
       });
-  
+
       function closePopup() {
         popup.classList.remove("technest-popup-active");
         overlay.classList.remove("technest-overlay-active");
       }
-  
+
       closePopupButton.addEventListener("click", closePopup);
       overlay.addEventListener("click", closePopup);
-  
-      document.getElementById("submitBtn").addEventListener("click", function (e) {
-        e.preventDefault();
-  
-        const nameInput = document.querySelector('input[name="name"]');
-        const phoneInput = document.querySelector('input[name="phone"]');
-        const emailInput = document.querySelector('input[name="email"]');
-        const descriptionInput = document.querySelector('textarea.technest-textarea');
-        const erormasge = document.querySelector('#erormasge');
-        
-        
-        const name = nameInput.value.trim();
-        const phone = phoneInput.value.trim();
-        const email = emailInput.value.trim();
-        const description = descriptionInput.value.trim();
-        
-        if (!name) {
-          nameInput.style.borderColor = 'red';
-          erormasge.innerHTML = "الرجاء إدخال الاسم";
-          return;
-        }
-        
-        const phoneRegex = /^(0|5)\d{8,9}$/;
-        if (!phoneRegex.test(phone)) {
-          phoneInput.style.borderColor = 'red';
-          erormasge.innerHTML = "الرجاء إدخال رقم صحيح";
-          return;
-        }
-        
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          emailInput.style.borderColor = 'red'; 
-          erormasge.innerHTML = "الرجاء إدخال بريد إلكتروني صحيح";
-          return;
-        }
-        
-        if (!description) {
-          descriptionInput.style.borderColor = 'red';
-          erormasge.innerHTML = "الرجاء إدخال الوصف";
-          return;
-        }
-        closePopup();
-  
-        lickup();
-  
-        const fileInput = document.getElementById("multipleImageUpload");
-        const dataTransfer = new DataTransfer();
-  
-        selectedFiles.forEach((file) => {
-          dataTransfer.items.add(file);
-        });
-  
-        fileInput.files = dataTransfer.files;
-  
-        const formData = new FormData(document.getElementById("form"));
 
-        nameInput.value = '';
-        phoneInput.value = '';
-        emailInput.value = '';
-        descriptionInput.value = '';
-        imagePreviewContainer.innerHTML = '';
-        erormasge.innerHTML = '';
-        basic();
-      });
-  
+      document
+        .getElementById("submitBtn")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const nameInput = document.querySelector('input[name="name"]');
+          const phoneInput = document.querySelector('input[name="phone"]');
+          const emailInput = document.querySelector('input[name="email"]');
+          const descriptionInput = document.querySelector(
+            "textarea.technest-textarea"
+          );
+          const erormasge = document.querySelector("#erormasge");
+
+          const name = nameInput.value.trim();
+          const phone = phoneInput.value.trim();
+          const email = emailInput.value.trim();
+          const description = descriptionInput.value.trim();
+
+          if (!name) {
+            nameInput.style.borderColor = "red";
+            erormasge.innerHTML = "الرجاء إدخال الاسم";
+            return;
+          }
+
+          const phoneRegex = /^(0|5)\d{8,9}$/;
+          if (!phoneRegex.test(phone)) {
+            phoneInput.style.borderColor = "red";
+            erormasge.innerHTML = "الرجاء إدخال رقم صحيح";
+            return;
+          }
+
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            emailInput.style.borderColor = "red";
+            erormasge.innerHTML = "الرجاء إدخال بريد إلكتروني صحيح";
+            return;
+          }
+
+          if (!description) {
+            descriptionInput.style.borderColor = "red";
+            erormasge.innerHTML = "الرجاء إدخال الوصف";
+            return;
+          }
+          closePopup();
+
+          lickup();
+
+          const fileInput = document.getElementById("multipleImageUpload");
+          const dataTransfer = new DataTransfer();
+
+          selectedFiles.forEach((file) => {
+            dataTransfer.items.add(file);
+          });
+
+          fileInput.files = dataTransfer.files;
+
+          const formData = new FormData(document.getElementById("form"));
+
+          nameInput.value = "";
+          phoneInput.value = "";
+          emailInput.value = "";
+          descriptionInput.value = "";
+          imagePreviewContainer.innerHTML = "";
+          erormasge.innerHTML = "";
+          basic();
+        });
+
       function basic() {
-        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'];
-  
+        const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff"];
+
         confetti({
           particleCount: 300,
-          spread: 100,
+          spread: 80,
           origin: { x: 0.5, y: 0.7 },
           colors: colors,
-          scalar: 1.2,
-          ticks: 500,
+          scalar: 1,
+          ticks: 100,
           angle: 90,
           zIndex: 9999,
         });
       }
       function lickup() {
-        let technestboxlike = document.getElementById('technest-box-like');
-      
-        technestboxlike.style.opacity = '1';
-        technestboxlike.style.transform = 'translate(-50%, -50%) scale(1)';
-      
+        let technestboxlike = document.getElementById("technest-box-like");
+
+        technestboxlike.style.opacity = "1";
+        technestboxlike.style.transform = "translate(-50%, -50%) scale(1)";
+
         setTimeout(() => {
-          technestboxlike.style.opacity = '';
-          technestboxlike.style.transform = '';
-        }, 250000000);
+          technestboxlike.style.opacity = "";
+          technestboxlike.style.transform = "";
+        }, 1700);
       }
-      
     </script>
   </body>
-  
 </html>
