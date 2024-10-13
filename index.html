@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <style>
       .technest-sercal {
         position: fixed;
@@ -21,7 +22,6 @@
         cursor: pointer;
       }
       .technest-popup {
-        
         position: fixed;
         background-color: white;
         padding: 20px;
@@ -88,7 +88,7 @@
         border-radius: 10px 0px 10px 0px;
         background: #ff1a1a;
         color: white;
-        border: none;
+        border: none;ƒ
         cursor: pointer;
       }
       .technest-box-flex {
@@ -306,6 +306,38 @@
       .textarea-box-textarea {
         position: relative;
       }
+      #erormasge {
+        color: #ff1a1a;
+        position: absolute;
+        left: 0;
+        font-size: 12px;
+      }
+      .technest-box-like {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed #cacaca;
+        padding: 50px;
+        border-radius: 50%;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0px 0px 5px 0px #dbdbdb;
+        opacity: 0;
+        transition: transform 5.5s ease-out, opacity 5.5s ease-out;
+        display: none;
+      }
+      .technest-box-like {
+        width: 200px;
+      }
+      .technest-like-active {
+        transition: transform 5.5s ease-out, opacity 5.5s ease-out;
+        display: block !important;
+        opacity: 1 !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+      }
     </style>
   </head>
   <body style="height: 10000px">
@@ -313,48 +345,52 @@
       <span class="technest-text" id="openPopup">اطلب منتج خاص</span>
     </div>
 
+    <div class="technest-box-like" id="technest-box-like">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#a1a5b7" d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2l144 0c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48l-97.5 0c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3l0-38.3 0-48 0-24.9c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192l64 0c17.7 0 32 14.3 32 32l0 224c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32L0 224c0-17.7 14.3-32 32-32z"/></svg>    
+    </div>
     <div class="technest-overlay" id="overlay"></div>
     <div class="technest-popup technest-popup-center" id="popup">
       <div class="technest-top">
+        <span id="erormasge"></span>
         <h5 class="technest-h1">طلب منتج خاص</h5>
       </div>
       <form class="technest-form" id="form">
         <div class="technest-box-group">
           <div class="technest-input-group">
             <input
-              required=""
               type="text"
               name="phone"
               autocomplete="off"
               class="technest-input technest-w-input-74"
-              id="technest-vaule"
+              id="technest-phone"
+              required
             />
             <label class="technest-user-label">رقم الجوال</label>
           </div>
           <div class="technest-input-group">
             <input
-              required=""
               type="text"
               name="name"
               autocomplete="off"
               class="technest-input technest-w-input-74"
-              id="technest-vaule"
+              id="technest-name"
+              required
             />
             <label class="technest-user-label">الاسم</label>
           </div>
         </div>
         <div class="technest-input-group technest-w-100">
           <input
-            required=""
+            required
             type="email"
             name="email"
             autocomplete="off"
             class="technest-input technest-w-input-100"
-            id="technest-vaule"
+            id="technest-email"
           />
           <label class="technest-user-label">الايميل</label>
         </div>
-
+  
         <div class="technest-box-svg">
           <input
             name="images[]"
@@ -378,36 +414,35 @@
             <p>انقر لاضافة الصور</p>
           </label>
         </div>
-
+  
         <div class="technest-text-center" id="imagePreviewContainer"></div>
-
+  
         <div class="textarea-box-textarea">
           <textarea
-            id="technest-vaule"
+            id="technest-description"
             class="technest-textarea"
             name=""
-            id=""
+            required
           ></textarea>
           <label class="technest-user-label">الوصف</label>
         </div>
-
+  
         <div class="technest-box-flex">
           <button class="technest-submit" id="submitBtn" type="submit">
             إرسال
           </button>
         </div>
       </form>
-
+  
       <button class="technest-x" id="closePopup">X</button>
     </div>
+  
     <script>
+      let selectedFiles = [];
       document.addEventListener("DOMContentLoaded", () => {
-        let selectedFiles = [];
-
-        const inputs = document.querySelectorAll(
-          ".technest-input, .technest-textarea"
-        );
-
+  
+        const inputs = document.querySelectorAll(".technest-input, .technest-textarea");
+  
         inputs.forEach((input) => {
           input.addEventListener("input", function () {
             if (this.value) {
@@ -416,25 +451,21 @@
               this.classList.remove("technest-has-value");
             }
           });
-
+  
           if (input.value) {
             input.classList.add("technest-has-value");
           }
         });
-
-        const multipleImageUpload = document.getElementById(
-          "multipleImageUpload"
-        );
-        const imagePreviewContainer = document.getElementById(
-          "imagePreviewContainer"
-        );
-
+  
+        const multipleImageUpload = document.getElementById("multipleImageUpload");
+        const imagePreviewContainer = document.getElementById("imagePreviewContainer");
+  
         multipleImageUpload.addEventListener("change", function () {
           selectedFiles = Array.from(this.files);
           this.value = "";
           updateImagePreview();
         });
-
+  
         function updateImagePreview() {
           imagePreviewContainer.innerHTML = "";
           selectedFiles.forEach((file, index) => {
@@ -442,11 +473,11 @@
             reader.onload = function (e) {
               const imgContainer = document.createElement("div");
               imgContainer.classList.add("technest-img-container");
-
+  
               const imgElement = document.createElement("img");
               imgElement.src = e.target.result;
               imgElement.classList.add("technest-preview-image");
-
+  
               const deleteBtn = document.createElement("button");
               deleteBtn.innerText = "حذف";
               deleteBtn.classList.add("technest-delete-btn");
@@ -454,7 +485,7 @@
                 selectedFiles.splice(index, 1);
                 updateImagePreview();
               });
-
+  
               imgContainer.appendChild(imgElement);
               imgContainer.appendChild(deleteBtn);
               imagePreviewContainer.appendChild(imgContainer);
@@ -462,39 +493,16 @@
             reader.readAsDataURL(file);
           });
         }
-
-        document
-          .getElementById("submitBtn")
-          .addEventListener("click", function (e) {
-            e.preventDefault();
-
-            const fileInput = document.getElementById("multipleImageUpload");
-            const dataTransfer = new DataTransfer();
-
-            selectedFiles.forEach((file) => {
-              dataTransfer.items.add(file);
-            });
-
-            fileInput.files = dataTransfer.files;
-
-            console.log("Selected Files:", Array.from(fileInput.files));
-
-            const formData = new FormData(document.getElementById("form"));
-            for (let [key, value] of formData.entries()) {
-              console.log(`${key}: ${value}`);
-            }
-          });
       });
-    </script>
-    <script>
+  
       const sercalElement = document.querySelector(".technest-sercal");
       const popup = document.getElementById("popup");
       const overlay = document.getElementById("overlay");
       const openPopupButton = document.getElementById("openPopup");
       const closePopupButton = document.getElementById("closePopup");
-
+  
       let scrollTimer;
-
+  
       window.addEventListener("scroll", () => {
         sercalElement.classList.add("technest-scroll-hidden");
         clearTimeout(scrollTimer);
@@ -502,19 +510,103 @@
           sercalElement.classList.remove("technest-scroll-hidden");
         }, 1000);
       });
-
+  
       openPopupButton.addEventListener("click", () => {
         popup.classList.add("technest-popup-active");
         overlay.classList.add("technest-overlay-active");
       });
-
+  
       function closePopup() {
         popup.classList.remove("technest-popup-active");
         overlay.classList.remove("technest-overlay-active");
       }
-
+  
       closePopupButton.addEventListener("click", closePopup);
       overlay.addEventListener("click", closePopup);
+  
+      document.getElementById("submitBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+  
+        const nameInput = document.querySelector('input[name="name"]');
+        const phoneInput = document.querySelector('input[name="phone"]');
+        const emailInput = document.querySelector('input[name="email"]');
+        const descriptionInput = document.querySelector('textarea.technest-textarea');
+        const erormasge = document.querySelector('#erormasge');
+        
+        
+        const name = nameInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const email = emailInput.value.trim();
+        const description = descriptionInput.value.trim();
+        
+        if (!name) {
+          nameInput.style.borderColor = 'red';
+          erormasge.innerHTML = "الرجاء إدخال الاسم";
+          return;
+        }
+        
+        const phoneRegex = /^(0|5)\d{8,9}$/;
+        if (!phoneRegex.test(phone)) {
+          phoneInput.style.borderColor = 'red';
+          erormasge.innerHTML = "الرجاء إدخال رقم صحيح";
+          return;
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          emailInput.style.borderColor = 'red'; 
+          erormasge.innerHTML = "الرجاء إدخال بريد إلكتروني صحيح";
+          return;
+        }
+        
+        if (!description) {
+          descriptionInput.style.borderColor = 'red';
+          erormasge.innerHTML = "الرجاء إدخال الوصف";
+          return;
+        }
+        closePopup();
+  
+        basic();
+        lickup();
+  
+        const fileInput = document.getElementById("multipleImageUpload");
+        const dataTransfer = new DataTransfer();
+  
+        selectedFiles.forEach((file) => {
+          dataTransfer.items.add(file);
+        });
+  
+        fileInput.files = dataTransfer.files;
+  
+        const formData = new FormData(document.getElementById("form"));
+
+        nameInput.value = '';
+        phoneInput.value = '';
+        emailInput.value = '';
+        descriptionInput.value = '';
+        imagePreviewContainer.innerHTML = '';
+        erormasge.innerHTML = '';
+      });
+  
+      function basic() {
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'];
+  
+        confetti({
+          particleCount: 300,
+          spread: 100,
+          origin: { x: 0.5, y: 0.7 },
+          colors: colors,
+          scalar: 1.2,
+          ticks: 200,
+          angle: 90,
+          zIndex: 9999,
+        });
+      }
+      function lickup () {
+        let technestboxlike = document.getElementById('technest-box-like');
+        technestboxlike.classList.add('technest-like-active');
+      }
     </script>
   </body>
+  
 </html>
