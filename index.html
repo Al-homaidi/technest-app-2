@@ -316,46 +316,87 @@
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(0); /* يبدأ بحجم صفر */
+        transform: translate(-50%, -50%) scale(0);
         display: flex;
         align-items: center;
         justify-content: center;
         border: 2px dashed #cacaca;
-        padding: 50px;
+        padding: 70px;
         border-radius: 50%;
         background-color: rgb(255, 255, 255);
         box-shadow: 0px 0px 5px 0px #dbdbdb;
         opacity: 0;
-        transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* تغير وقت الانتقال */
-    }
-
-    .technest-like-active {
-        opacity: 1; /* يصبح مرئياً */
-        transform: translate(-50%, -50%) scale(1); /* يتحول إلى الحجم الكامل */
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
     }
     .technest-like-active svg {
       width: 200px;
     }
-    button {
-        margin-top: 20px; /* إضافة هامش للزر */
+    .technest-horn-like {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 100px;
+      font-size: 100px;
     }
-    .technest-like-anactive {
-      opacity: 0; /* يصبح مرئياً */
-      transform: translate(-50%, -50%) scale(0); /* يتحول إلى الحجم الكامل */
+    .technest-box-like {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border: 2px dashed #cacaca;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0px 0px 5px 0px #dbdbdb;
+      margin: 50px auto; /* Centers the circle horizontally */
     }
+  
+    .technest-horn-like {
+      position: absolute;
+      font-size: 3rem;
+      bottom: 20px;
+      text-align: center;
+    }
+  
+svg {
+  fill: currentColor;
+  height: auto;
+  max-width: 66vmin;
+  transform-origin: center;
+  width: 66%;
+}
     </style>
   </head>
   <body style="height: 10000px">
     <div class="technest-sercal">
       <span class="technest-text" id="openPopup">اطلب منتج خاص</span>
     </div>
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path fill="#a1a5b7" d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2l144 0c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48l-97.5 0c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3l0-38.3 0-48 0-24.9c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192l64 0c17.7 0 32 14.3 32 32l0 224c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32L0 224c0-17.7 14.3-32 32-32z"/>
+    </svg> -->
+    <svg viewBox="0 0 100 100" width="100" height="100">
+      <defs>
+        <path id="circle"
+          d="
+            M 50, 50
+            m -37, 0
+            a 37,37 0 1,1 74,0
+            a 37,37 0 1,1 -74,0"/>
+      </defs>
+      <text font-size="17">
+        <textPath xlink:href="#circle">
+          You spin me right round, baby...
+          <div class="technest-box-like" id="technest-box-like">
 
-    <div class="technest-box-like" id="technest-box-like">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path fill="#a1a5b7" d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2l144 0c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48l-97.5 0c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3l0-38.3 0-48 0-24.9c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192l64 0c17.7 0 32 14.3 32 32l0 224c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32L0 224c0-17.7 14.3-32 32-32z"/>
-      </svg>
-      🎉🎉
-  </div>
+            <span class="technest-horn-like">🎉</span>
+          </div>
+        </textPath>
+        
+      </text>
+    </svg>
+
 
   <button onclick="lickup()">Like</button>
 
@@ -608,18 +649,23 @@
           origin: { x: 0.5, y: 0.7 },
           colors: colors,
           scalar: 1.2,
-          ticks: 200,
+          ticks: 500,
           angle: 90,
           zIndex: 9999,
         });
       }
       function lickup() {
         let technestboxlike = document.getElementById('technest-box-like');
-        technestboxlike.classList.add('technest-like-active'); // إضافة الكلاس
+      
+        technestboxlike.style.opacity = '1';
+        technestboxlike.style.transform = 'translate(-50%, -50%) scale(1)';
+      
         setTimeout(() => {
-            technestboxlike.classList.add('technest-like-anactive'); // إزالة الكلاس بعد 5 ثواني
-        }, 500000); // 5000 مللي ثانية = 5 ثواني
+          technestboxlike.style.opacity = '';
+          technestboxlike.style.transform = '';
+        }, 250000000);
       }
+      
     </script>
   </body>
   
