@@ -31,14 +31,13 @@
         }
 
         :root {
-          --marquee-width: 100vw;
+          --marquee-width: 200vw;
           --marquee-height: 10vh;
-          /* --marquee-elements: 12; */ /* defined with JavaScript */
-          --marquee-elements-displayed: 5;
+          --marquee-elements-displayed: 1;
           --marquee-element-width: calc(
             var(--marquee-width) / var(--marquee-elements-displayed)
           );
-          --marquee-animation-duration: calc(var(--marquee-elements) * 3s);
+          --marquee-animation-duration: calc(var(--marquee-elements) * 18s);
         }
 
         .marquee {
@@ -56,12 +55,10 @@
           display: flex;
           animation: scrolling var(--marquee-animation-duration) linear infinite;
         }
-        /* .marquee-content:hover {
-      animation-play-state: paused;
-    } */
+
         @keyframes scrolling {
           0% {
-            transform: translateX(0);
+            transform: translateX(0%);
           }
           100% {
             transform: translateX(
@@ -116,7 +113,7 @@
   <body>
     <div class="marquee">
       <ul class="marquee-content">
-        <li><i class="fab fa-github"></i></li>
+        <!-- <li><i class="fab fa-github"></i></li>
         <li><i class="fab fa-codepen"></i></li>
         <li><i class="fab fa-free-code-camp"></i></li>
         <li><i class="fab fa-dev"></i></li>
@@ -126,8 +123,8 @@
         <li><i class="fab fa-node"></i></li>
         <li><i class="fab fa-wordpress"></i></li>
         <li><i class="fab fa-aws"></i></li>
-        <li><i class="fab fa-docker"></i></li>
-        <li><i class="fab fa-android"></i></li>
+        <li><i class="fab fa-docker"></i></li> -->
+        <li>اعلان هام لك الزباىن الكرام خصم ٥٠ ٪ علا كل المنتجات</li>
       </ul>
     </div>
     <script
