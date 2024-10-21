@@ -6,6 +6,12 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <style>
+        :root {
+          --maincolor: #0969e6;
+          --redcolor: #ba0101;
+          --whitecolor: #800101;
+          --textcolor: #4e4e4e;
+        }
         .technest-sercal {
           position: fixed;
           top: 50%;
@@ -16,14 +22,14 @@
         }
         .technest-text {
           color: white;
-          background-color: #1a73e8;
+          background-color: var(--maincolor);
           border-radius: 10px;
           padding: 5px 10px;
           cursor: pointer;
         }
         .technest-popup {
           position: fixed;
-          background-color: white;
+          background-color: var(--whitecolor);
           padding: 20px;
           box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
           z-index: 1000;
@@ -64,7 +70,7 @@
           display: none;
         }
         .technest-h1 {
-          background: #1a73e8;
+          background: var(--maincolor);
           padding: 6px;
           border-radius: 9px;
           color: white;
@@ -86,9 +92,9 @@
           top: 0;
           left: 0;
           border-radius: 10px 0px 10px 0px;
-          background: #ff1a1a;
+          background: var(--redcolor);
           color: white;
-          border: none;ƒ
+          border: none;
           cursor: pointer;
         }
         .technest-box-flex {
@@ -126,7 +132,7 @@
         .technest-user-label {
           position: absolute;
           right: 15px;
-          color: #000000;
+          color: var(--textcolor);
           pointer-events: none;
           transform: translateY(1rem);
           transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -138,7 +144,7 @@
         .technest-textarea:focus,
         .technest-has-value {
           outline: none;
-          border: 1.5px solid #1a73e8 !important ;
+          border: 1.5px solid var(--maincolor) !important ;
         }
 
         .technest-input:focus ~ .technest-user-label,
@@ -147,9 +153,9 @@
         .technest-textarea:focus ~ .technest-user-label,
         .technest-has-value ~ .technest-user-label {
           transform: translateY(-50%) scale(0.8);
-          background-color: #ffffff;
+          background-color: var(--whitecolor);
           padding: 0 0.2em;
-          color: #2196f3;
+          color: var(--maincolor);
         }
         @media (max-width: 767px) {
           .technest-popup-center {
@@ -158,7 +164,7 @@
         }
 
         .technest-submit {
-          background: #1a73e8;
+          background: var(--maincolor);
           color: white;
           outline: none;
           border: none;
@@ -170,22 +176,22 @@
 
         .technest-submit {
           border: 0;
-          background-color: #1a73e8;
+          background-color: var(--maincolor);
           letter-spacing: 1.5px;
           font-size: 15px;
           transition: all 0.3s ease;
-          box-shadow: rgb(26 115 232 / 89%) 0px 3px 0px 0px;
+          box-shadow: rgb(30 34 38 / 5%) 0px 3px 0px 0px;
           color: hsl(0, 0%, 100%);
           cursor: pointer;
         }
 
         .technest-submit:hover {
-          box-shadow: rgb(26 115 232 / 89%) 0px 1px 0px 0px;
+          box-shadow: rgb(30 34 38 / 5%) 0px 1px 0px 0px;
         }
 
         .technest-submit:active {
-          background-color: #1a73e8;
-          box-shadow: rgb(26 115 232 / 80%) 0px 0px 0px 0px;
+          background-color: var(--maincolor);
+          box-shadow: rgb(30 34 38 / 5%) 0px 1px 0px 0px;
           transform: translateY(5px);
           transition: 200ms;
         }
@@ -203,13 +209,13 @@
           border: 2px dashed #cacaca;
           box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
           border: 2px dashed #cacaca;
-          background-color: rgba(255, 255, 255, 1);
+          background-color: var(--whitecolor);
           gap: 10px;
           cursor: pointer;
         }
         .technest-box-child svg {
           width: 20px;
-          color: #a1a5b7;
+          color: var(--textcolor);
         }
         .technest-box-child p {
           margin: 0;
@@ -223,7 +229,7 @@
           margin: 10px;
           background-color: white;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          border-radius: 8px;
+          border-radius: 5px;
           padding: 1px 1px 28px;
         }
         .technest-preview-image {
@@ -231,13 +237,14 @@
           height: 50px;
           display: block;
           object-fit: contain;
+          border-radius: 5px;
         }
         .technest-delete-btn {
           position: absolute;
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-          background-color: #ff4d4d;
+          background-color: var(--redcolor);
           color: white;
           border: none;
           padding: 5px 10px;
@@ -248,7 +255,7 @@
         }
 
         .technest-delete-btn:hover {
-          background-color: #ff1a1a;
+          background-color: var(--redcolor);
         }
         .technest-text-center {
           text-align: center;
@@ -262,7 +269,7 @@
         }
 
         .technest-text-center::-webkit-scrollbar-thumb {
-          background-color: #1a73e8;
+          background-color: var(--maincolor);
           border-radius: 10px;
           border: none;
         }
@@ -301,13 +308,13 @@
           font-size: 16px;
           line-height: 1.5;
           color: #333;
-          background-color: #fff;
+          background-color: var(--whitecolor);
         }
         .textarea-box-textarea {
           position: relative;
         }
         #erormasge {
-          color: #ff1a1a;
+          color: var(--redcolor);
           position: absolute;
           left: 0;
           font-size: 12px;
@@ -323,7 +330,7 @@
           border: 2px dashed #cacaca;
           padding: 70px;
           border-radius: 50%;
-          background-color: rgb(255, 255, 255);
+          background-color: var(--whitecolor);
           box-shadow: 0px 0px 5px 0px #dbdbdb;
           opacity: 0;
           transition: transform 0.3s ease-out, opacity 0.3s ease-out;
@@ -344,7 +351,7 @@
         position: absolute;
         top: 11px;
         color: white;
-        background: #1a73e8;
+        background: var(--maincolor);
         padding: 4px;
         border-radius: 10px;
         box-shadow: 0px 0px 5px 0px #dbdbdb;
@@ -430,11 +437,11 @@
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
               <path
-                fill="#a1a5b7"
+                fill="var(--textcolor)"
                 d="M64 464c-8.8 0-16-7.2-16-16L48 64c0-8.8 7.2-16 16-16l160 0 0 80c0 17.7 14.3 32 32 32l80 0 0 288c0 8.8-7.2 16-16 16L64 464zM64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-293.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0L64 0zm96 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm69.2 46.9c-3-4.3-7.9-6.9-13.2-6.9s-10.2 2.6-13.2 6.9l-41.3 59.7-11.9-19.1c-2.9-4.7-8.1-7.5-13.6-7.5s-10.6 2.8-13.6 7.5l-40 64c-3.1 4.9-3.2 11.1-.4 16.2s8.2 8.2 14 8.2l48 0 32 0 40 0 72 0c6 0 11.4-3.3 14.2-8.6s2.4-11.6-1-16.5l-72-104z"
               />
             </svg>
-            <p>انقر لاضافة الصور</p>
+            <p style="color: var(--textcolor);">انقر لاضافة الصور</p>
           </label>
         </div>
 
@@ -571,27 +578,27 @@
           const description = descriptionInput.value.trim();
 
           if (!name) {
-            nameInput.style.borderColor = "red";
+            nameInput.style.borderColor = "var(--redcolor)";
             erormasge.innerHTML = "الرجاء إدخال الاسم";
             return;
           }
 
           const phoneRegex = /^(0|5)\d{8,9}$/;
           if (!phoneRegex.test(phone)) {
-            phoneInput.style.borderColor = "red";
+            phoneInput.style.borderColor = "var(--redcolor)";
             erormasge.innerHTML = "الرجاء إدخال رقم صحيح";
             return;
           }
 
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           if (!emailRegex.test(email)) {
-            emailInput.style.borderColor = "red";
+            emailInput.style.borderColor = "var(--redcolor)";
             erormasge.innerHTML = "الرجاء إدخال بريد إلكتروني صحيح";
             return;
           }
 
           if (!description) {
-            descriptionInput.style.borderColor = "red";
+            descriptionInput.style.borderColor = "var(--redcolor)";
             erormasge.innerHTML = "الرجاء إدخال الوصف";
             return;
           }
