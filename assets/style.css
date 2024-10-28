@@ -9,12 +9,10 @@ html {
 }
 .technest-sercal {
   position: fixed;
-  top: 50%;
   transform: translateY(-50%);
   text-align: end;
-  transition: left 0.6s, opacity 0.6s;
+  transition: left 0.6s, right 0.6s, opacity 0.6s;
   z-index: 9999999999;
-  left: 10px;
 }
 .technest-text {
   color: white;
@@ -52,12 +50,14 @@ html {
 .technest-overlay-active {
   display: block !important;
 }
-.technest-scroll-hidden {
-  transform: translateY(-50%);
-  left: -100px;
+.technest-scroll-hidden-left {
+  left: -100px !important;
   opacity: 0.5;
-  display: flex;
 }
+.technest-scroll-hidden-right {
+    right: -100px !important;
+    opacity: 0.5;
+  }
 .technest-popup-center {
   left: 50%;
   top: 50%;
