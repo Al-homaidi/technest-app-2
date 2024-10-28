@@ -3,9 +3,9 @@ html {
 }
 :root {
   --maincolor: #0969e6;
-  --redcolor: #ba0101;
-  --whitecolor: #800101;
-  --textcolor: #4e4e4e;
+  --redcolor: #F44336;
+  --whitecolor: #ffffff;
+  --textcolor: #000000;
 }
 .technest-sercal {
   position: fixed;
