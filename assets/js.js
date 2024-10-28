@@ -266,5 +266,5 @@ function lickup() {
   setTimeout(() => {
     technestboxlike.style.opacity = "";
     technestboxlike.style.transform = "";
-  }, 300000000);
+  }, 3000);
 }
