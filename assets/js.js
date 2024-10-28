@@ -4,10 +4,10 @@ const overlay = document.getElementById("overlay");
 const openPopupButton = document.getElementById("openPopup");
 const closePopupButton = document.getElementById("closePopup");
 let positionleftorright = "";
+const technestsercal = document.querySelector(".technest-sercal");
 
 async function fetchImagesArray() {
   try {
-    const technestsercal = document.querySelector(".technest-sercal");
     technestsercal.style.display = "none";
     const response = await fetch(
       "http://127.0.0.1:8000/api/testimonial/1/groups"
@@ -92,10 +92,10 @@ async function fetchImagesArray() {
   }
 }
 
-fetchImagesArray();
 
 let selectedFiles = [];
 document.addEventListener("DOMContentLoaded", () => {
+    fetchImagesArray();
   const inputs = document.querySelectorAll(
     ".technest-input, .technest-textarea"
   );
