@@ -4,6 +4,97 @@ const overlay = document.getElementById("overlay");
 const openPopupButton = document.getElementById("openPopup");
 const closePopupButton = document.getElementById("closePopup");
 
+async function fetchImagesArray() {
+    try {
+      const technestsercal = document.querySelector(
+        ".technest-sercal"
+      );
+      technestsercal.style.display = "none";
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/testimonial/1/groups"
+      );
+      const data = await response.json();
+      console.log(data);
+  
+    //   const triggerButton = document.querySelector(".testimonials-trigger");
+    //   const span = triggerButton.querySelector("span");
+  
+    //   const technest_text = document.querySelector(".technest-text");
+  
+    //   if (data.testimonial_icon_type == "custom") {
+    //     // testimonial_icon.setAttribute("src", "");
+    //     // testimonial_icon.style.display = "none";
+  
+    //     technest_text.textContent =
+    //       data.testimonial_logo_text ?? "تجارب عملائنا";
+    //     technest_text.style.color =
+    //       data.testimonial_logo_text_color ?? "black";
+    //     technest_text.style.backgroundColor =
+    //       data.testimonial_logo_bg_color ?? "white";
+    //     technest_text.style.display = "flex";
+    //     technest_text.style.alignItems = "center";
+    //     technest_text.style.justifyContent = "center";
+    //     technest_text.style.width = "100%";
+    //     technest_text.style.height = "100%";
+    //   } else {
+    //     // testimonial_icon.setAttribute("src", data.testimonial_icon);
+    //     // testimonial_icon.style.display = "initial";
+  
+    //     technest_text.style.display = "none";
+    //     technest_text.style.color = "initial";
+    //     technest_text.style.backgroundColor = "initial";
+    //   }
+  
+      switch (data.testimonial_icon_position) {
+        case "right_up":
+          technestsercal.style.top = "100px";
+          technestsercal.style.right = "7px";
+          positionleftorright = "hidden-right";
+          break;
+        case "right_middle":
+          technestsercal.style.top = "50%";
+          technestsercal.style.right = "7px";
+          technestsercal.style.transform = "translateY(-50%)";
+          positionleftorright = "hidden-right";
+          break;
+        case "right_down":
+          technestsercal.style.bottom = "20px";
+          technestsercal.style.right = "7px";
+          positionleftorright = "hidden-right";
+          break;
+        case "left_up":
+          technestsercal.style.top = "100px";
+          technestsercal.style.left = "7px";
+          positionleftorright = "hidden-left";
+          break;
+        case "left_middle":
+          technestsercal.style.top = "50%";
+          technestsercal.style.left = "7px";
+          technestsercal.style.transform = "translateY(-50%)";
+          positionleftorright = "hidden-left";
+          break;
+        case "left_down":
+          technestsercal.style.bottom = "20px";
+          technestsercal.style.left = "7px";
+          positionleftorright = "hidden-left";
+          break;
+        default:
+          technestsercal.style.top = "100px";
+          technestsercal.style.right = "7px";
+          positionleftorright = "hidden-left";
+      }
+  
+      setTimeout(() => {
+        technestsercal.style.display = "block";
+      }, 1000);
+  
+  
+    } catch (error) {
+      console.error("Error fetching images array:", error);
+    }
+}
+
+fetchImagesArray();
 
 let selectedFiles = [];
 document.addEventListener("DOMContentLoaded", () => {
