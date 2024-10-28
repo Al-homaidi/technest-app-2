@@ -87,7 +87,7 @@ html {
   color: white;
   border: none;
   cursor: pointer;
-  padding: 5px;
+  padding: 0px 5px;
 }
 .technest-box-flex {
   display: flex;
