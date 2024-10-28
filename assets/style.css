@@ -13,6 +13,7 @@ html {
   text-align: end;
   transition: left 0.6s, right 0.6s, opacity 0.6s;
   z-index: 9999999999;
+  display: none;
 }
 .technest-text {
   color: white;
