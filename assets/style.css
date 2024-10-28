@@ -66,13 +66,7 @@ html {
   min-width: 300px;
   display: none;
 }
-.technest-h1 {
-  background: var(--maincolor);
-  padding: 6px;
-  border-radius: 9px;
-  color: white;
-  margin: 0;
-}
+
 .technest-top {
   display: flex;
   justify-content: flex-start;
