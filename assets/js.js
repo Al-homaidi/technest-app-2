@@ -5,10 +5,10 @@ const openPopupButton = document.getElementById("openPopup");
 const closePopupButton = document.getElementById("closePopup");
 let positionleftorright = "";
 const technestsercal = document.querySelector(".technest-sercal");
+technestsercal.style.display = "none";
 
 async function fetchImagesArray() {
   try {
-    technestsercal.style.display = "none";
     const response = await fetch(
       "http://127.0.0.1:8000/api/testimonial/1/groups"
     );
@@ -44,7 +44,6 @@ async function fetchImagesArray() {
     //     technest_text.style.backgroundColor = "initial";
     //   }
 
-    console.log(data.testimonial_icon_position);
     switch (data.testimonial_icon_position) {
       case "right_up":
         technestsercal.style.top = "100px";
