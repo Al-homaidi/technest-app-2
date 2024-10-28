@@ -92,10 +92,9 @@ async function fetchImagesArray() {
   }
 }
 
-
 let selectedFiles = [];
 document.addEventListener("DOMContentLoaded", () => {
-    fetchImagesArray();
+  fetchImagesArray();
   const inputs = document.querySelectorAll(
     ".technest-input, .technest-textarea"
   );

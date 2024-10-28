@@ -1,9 +1,9 @@
 html {
-    direction: rtl;
+  direction: rtl;
 }
 :root {
   --maincolor: #0969e6;
-  --redcolor: #F44336;
+  --redcolor: #f44336;
   --whitecolor: #ffffff;
   --textcolor: #000000;
 }
@@ -55,9 +55,9 @@ html {
   opacity: 0.5;
 }
 .technest-scroll-hidden-right {
-    right: -100px !important;
-    opacity: 0.5;
-  }
+  right: -100px !important;
+  opacity: 0.5;
+}
 .technest-popup-center {
   left: 50%;
   top: 50%;
@@ -329,28 +329,30 @@ input[type="file"] {
   z-index: 9999;
 }
 .technest-like-active svg {
-width: 200px;
+  width: 200px;
 }
 .technest-horn-like {
-display: flex;
-align-items: center;
-justify-content: center;
-width: 100px;
-height: 100px;
-font-size: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  font-size: 100px;
 }
 .technest-horn-like svg {
-    width: 100px;
+  width: 100px;
 }
 .technest-like-p {
-position: absolute;
-top: 11px;
-color: white;
-background: var(--maincolor);
-padding: 4px;
-border-radius: 10px;
-box-shadow: 0px 0px 5px 0px #dbdbdb;
-color-scheme: red;
-line-break: coloer;
-font-size: 12px;
+  position: absolute;
+  top: 20px;
+  color: white;
+  background: var(--maincolor);
+  padding: 4px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px #dbdbdb;
+  color-scheme: red;
+  line-break: coloer;
+  font-size: 12px;
+  font-size: 10px;
+  padding: 0 10px;
 }
