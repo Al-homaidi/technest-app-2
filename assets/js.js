@@ -1,3 +1,10 @@
+const sercalElement = document.querySelector(".technest-sercal");
+const popup = document.getElementById("popup");
+const overlay = document.getElementById("overlay");
+const openPopupButton = document.getElementById("openPopup");
+const closePopupButton = document.getElementById("closePopup");
+
+
 let selectedFiles = [];
 document.addEventListener("DOMContentLoaded", () => {
   const inputs = document.querySelectorAll(
@@ -60,11 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-const sercalElement = document.querySelector(".technest-sercal");
-const popup = document.getElementById("popup");
-const overlay = document.getElementById("overlay");
-const openPopupButton = document.getElementById("openPopup");
-const closePopupButton = document.getElementById("closePopup");
 
 let scrollTimer;
 
