@@ -1,3 +1,6 @@
+html {
+    direction: rtl;
+}
 :root {
   --maincolor: #0969e6;
   --redcolor: #ba0101;
@@ -9,8 +12,9 @@
   top: 50%;
   transform: translateY(-50%);
   text-align: end;
-  transition: transform 0.6s, opacity 0.6s;
+  transition: left 0.6s, opacity 0.6s;
   z-index: 99;
+  left: 10px;
 }
 .technest-text {
   color: white;
@@ -49,7 +53,8 @@
   display: block !important;
 }
 .technest-scroll-hidden {
-  transform: translateY(-50%) translateX(-100px);
+  transform: translateY(-50%);
+  left: -100px;
   opacity: 0.5;
   display: flex;
 }
@@ -70,7 +75,7 @@
 }
 .technest-top {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   position: relative;
 }
 .technest-form {
@@ -338,6 +343,9 @@ justify-content: center;
 width: 100px;
 height: 100px;
 font-size: 100px;
+}
+.technest-horn-like svg {
+    width: 100px;
 }
 .technest-like-p {
 position: absolute;
