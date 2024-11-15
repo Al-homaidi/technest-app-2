@@ -182,44 +182,80 @@ overlay.addEventListener("click", closePopup);
 document.getElementById("submitBtn").addEventListener("click", function (e) {
   e.preventDefault();
 
-  const nameInput = document.querySelector('input[name="name"]');
-  const phoneInput = document.querySelector('input[name="phone"]');
-  const emailInput = document.querySelector('input[name="email"]');
-  const descriptionInput = document.querySelector("textarea.technest-textarea");
-  const erormasge = document.querySelector("#erormasge");
+  const inputs = document.querySelectorAll("input, textarea");
+  let isValid = true;
 
-  const name = nameInput.value.trim();
-  const phone = phoneInput.value.trim();
-  const email = emailInput.value.trim();
-  const description = descriptionInput.value.trim();
+  inputs.forEach((input) => {
+    const inputGroup =
+      input.closest(".technest-input-group") ||
+      input.closest(".textarea-box-textarea");
+    const label = inputGroup?.querySelector(".technest-user-label");
 
-  if (!name) {
-    nameInput.style.borderColor = "var(--redcolor)";
-    erormasge.innerHTML = "الرجاء إدخال الاسم";
+    if (!label) return;
+
+    const value = input.value.trim();
+    const originalLabelText = label.dataset.originalText || label.innerHTML;
+
+    if (!label.dataset.originalText) {
+      label.dataset.originalText = originalLabelText;
+    }
+
+    if (input.name === "name" && !value) {
+      input.style.borderColor = "var(--redcolor)";
+      label.innerHTML = "الرجاء إدخال الاسم";
+      label.style.color = "var(--redcolor)";
+      isValid = false;
+    } else if (input.name === "phone") {
+      const phoneRegex = /^(0|5)\d{8,9}$/;
+      if (!phoneRegex.test(value)) {
+        input.style.borderColor = "var(--redcolor)";
+        label.innerHTML = "الرجاء إدخال رقم صحيح";
+        label.style.color = "var(--redcolor)";
+        isValid = false;
+      }
+    } else if (input.name === "email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        input.style.borderColor = "var(--redcolor)";
+        label.innerHTML = "الرجاء إدخال بريد إلكتروني صحيح";
+        label.style.color = "var(--redcolor)";
+        isValid = false;
+      }
+    } else if (
+      (input.name === "description" ||
+        input.classList.contains("technest-textarea")) &&
+      !value
+    ) {
+      input.style.borderColor = "var(--redcolor)";
+      label.innerHTML = "الرجاء إدخال الوصف";
+      label.style.color = "var(--redcolor)";
+      isValid = false;
+    } else {
+      input.style.borderColor = "var(--maincolor)";
+      label.innerHTML = originalLabelText;
+      label.style.color = "";
+    }
+
+    input.addEventListener("focus", () => {
+      input.style.borderColor = "";
+      label.innerHTML = originalLabelText;
+      label.style.color = "";
+    });
+
+    input.addEventListener("blur", () => {
+      if (!input.value.trim()) {
+        input.style.borderColor = "var(--redcolor)";
+        label.innerHTML = "الرجاء تعبئة الحقل";
+        label.style.color = "var(--redcolor)";
+      }
+    });
+  });
+
+  if (!isValid) {
     return;
   }
 
-  const phoneRegex = /^(0|5)\d{8,9}$/;
-  if (!phoneRegex.test(phone)) {
-    phoneInput.style.borderColor = "var(--redcolor)";
-    erormasge.innerHTML = "الرجاء إدخال رقم صحيح";
-    return;
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    emailInput.style.borderColor = "var(--redcolor)";
-    erormasge.innerHTML = "الرجاء إدخال بريد إلكتروني صحيح";
-    return;
-  }
-
-  if (!description) {
-    descriptionInput.style.borderColor = "var(--redcolor)";
-    erormasge.innerHTML = "الرجاء إدخال الوصف";
-    return;
-  }
   closePopup();
-
   lickup();
 
   const fileInput = document.getElementById("multipleImageUpload");
@@ -233,12 +269,13 @@ document.getElementById("submitBtn").addEventListener("click", function (e) {
 
   const formData = new FormData(document.getElementById("form"));
 
-  nameInput.value = "";
-  phoneInput.value = "";
-  emailInput.value = "";
-  descriptionInput.value = "";
+  inputs.forEach((input) => {
+    input.value = "";
+    // input.blur();
+  });
+
   imagePreviewContainer.innerHTML = "";
-  erormasge.innerHTML = "";
+
   basic();
 });
 

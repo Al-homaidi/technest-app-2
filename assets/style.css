@@ -137,7 +137,14 @@ input:valid,
 .technest-textarea:focus,
 .technest-has-value {
   outline: none;
-  border: 1.5px solid var(--maincolor) !important ;
+  border: 1.5px solid var(--maincolor);
+}
+
+.technest-textarea:focus-visible,
+.technest-textarea:focus,
+.technest-textarea-has-value {
+  border: 1.5px solid var(--maincolor) !important;
+
 }
 
 .technest-input:focus ~ .technest-user-label,
