@@ -231,7 +231,7 @@ document.getElementById("submitBtn").addEventListener("click", function (e) {
       label.style.color = "var(--redcolor)";
       isValid = false;
     } else {
-      input.style.borderColor = "";
+      input.style.borderColor = "var(--maincolor)";
       label.innerHTML = originalLabelText;
       label.style.color = "";
     }
@@ -251,14 +251,12 @@ document.getElementById("submitBtn").addEventListener("click", function (e) {
     });
   });
 
-  // إذا كان التحقق غير صحيح، لا تقم بالإرسال
   if (!isValid) {
     return;
   }
 
-  // إذا كانت البيانات صحيحة، تابع الإرسال
-  closePopup(); // إغلاق النافذة المنبثقة
-  lickup(); // عملية أخرى إذا كانت موجودة
+  closePopup();
+  lickup();
 
   const fileInput = document.getElementById("multipleImageUpload");
   const dataTransfer = new DataTransfer();
@@ -271,17 +269,14 @@ document.getElementById("submitBtn").addEventListener("click", function (e) {
 
   const formData = new FormData(document.getElementById("form"));
 
-  // إعادة تعيين جميع الحقول
   inputs.forEach((input) => {
-    input.value = ""; // إعادة القيم إلى فارغة
-    input.blur(); // إزالة التركيز من كل الحقول بعد الإرسال
+    input.value = "";
+    // input.blur();
   });
 
-  // إزالة الصور أو المعاينات
   imagePreviewContainer.innerHTML = "";
 
-  // إعادة أي شيء آخر إذا كان موجودًا (مثل اختيار الصور أو أي عمليات أخرى)
-  basic(); // إذا كان لديك دالة لإعادة الأشياء إلى حالتها الأصلية
+  basic();
 });
 
 function basic() {
